@@ -4,17 +4,20 @@
   "description": "Create ts config files in the current directory",
   "main": "./dist/index.js",
   "scripts": {
-    "auto-compile": "npm run lint && tsc -w -p ./tsconfig.src.json",
+    "auto-compile": "npm run lint && tsc -w -p tsconfig.json",
     "start": "node ./dist/index.js",
-    "compile": "npm run lint && tsc -p ./tsconfig.src.json",
-    "lint": "tslint --project ./tsconfig.src.json"
+    "compile": "npm run lint && tsc -p tsconfig.json",
+    "lint": "tslint -c tslint.json -p tsconfig.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/udosajh/tsconfig-init.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "tsconfig init",
+    "tsconfig default file"
+  ],
+  "author": "udosajh",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/udosajh/tsconfig-init/issues"
@@ -30,10 +33,13 @@
     "typescript": "^4.1.2"
   },
   "dependencies": {
+    "@types/yargs": "^15.0.10",
     "js-beautify": "^1.13.0",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.4",
+    "yargs": "^16.1.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  }
+  },
+  "bin": "dist/index.js"
 }

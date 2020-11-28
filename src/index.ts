@@ -1,10 +1,23 @@
+#!/usr/bin/env node
 import fs = require("fs");
 import shelljs = require("shelljs");
 import path = require("path");
 import jsBeautify = require("js-beautify");
+import yargs = require("yargs");
+
+const args = yargs(process.argv).options({
+    "indentation": {
+        alias: "i",
+        description: "indentation of tsconfig file default => 4",
+        default: 4,
+        type: "number"
+    }
+}).help("help").argv;
+
+
 const currentDirPath = shelljs.pwd().stdout;
 
-const tsconfigBase = {
+const tsconfig = {
     "compileOnSave": true,
     "compilerOptions": {
         "target": "es2015",
@@ -28,41 +41,22 @@ const tsconfigBase = {
         "moduleResolution": "node",
         "baseUrl": ".",
         "paths": {
-            "*": [
-                "node_modules/*"
-            ]
+            "*": ["node_modules/*"]
         },
-        "rootDirs": [
-            "."
-        ]
-    }
-};
-
-const tsconfigSrc = {
-    "extends": "./tsconfig.base.json",
-    "compilerOptions": {
+        "rootDirs": ["."],
         "outDir": "./dist",
     },
     "include": [
         "src/**/*",
-    ]
-};
-
-const tsconfigTest = {
-    "extends": "./tsconfig.base.json",
-    "compilerOptions": {
-        "outDir": "./dist",
-    },
-    "include": [
         "test/**/*"
     ]
 };
 
-const tsconfigBaseFilePath = currentDirPath + path.sep + "tsconfig.base.json";
-const tsconfigSrcFilePath = currentDirPath + path.sep + "tsconfig.src.json";
-const tsconfigTestFilePath = currentDirPath + path.sep + "tsconfig.test.json";
+const tsconfigPath = currentDirPath + path.sep + "tsconfig.json";
 
+const options: jsBeautify.JSBeautifyOptions = {
+    wrap_line_length: 1,
+    indent_size: args.indentation
+};
 
-fs.writeFileSync(tsconfigBaseFilePath, jsBeautify.js_beautify(JSON.stringify(tsconfigBase)));
-fs.writeFileSync(tsconfigSrcFilePath, jsBeautify.js_beautify(JSON.stringify(tsconfigSrc)));
-fs.writeFileSync(tsconfigTestFilePath, jsBeautify.js_beautify(JSON.stringify(tsconfigTest)));
+fs.writeFileSync(tsconfigPath, jsBeautify.js_beautify(JSON.stringify(tsconfig), options));
