@@ -32,5 +32,8 @@
   "dependencies": {
     "js-beautify": "^1.13.0",
     "shelljs": "^0.8.4"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

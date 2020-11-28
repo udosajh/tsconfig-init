@@ -22,6 +22,8 @@ const tsconfigBase = {
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noImplicitReturns": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
         "noFallthroughCasesInSwitch": true,
         "moduleResolution": "node",
         "baseUrl": ".",
