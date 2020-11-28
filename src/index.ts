@@ -60,7 +60,7 @@ const tsconfigTest = {
 
 const tsconfigBaseFilePath = currentDirPath + path.sep + "tsconfig.base.json";
 const tsconfigSrcFilePath = currentDirPath + path.sep + "tsconfig.src.json";
-const tsconfigTestFilePath =       currentDirPath + path.sep + "tsconfig.test.json";
+const tsconfigTestFilePath = currentDirPath + path.sep + "tsconfig.test.json";
 
 
 fs.writeFileSync(tsconfigBaseFilePath, jsBeautify.js_beautify(JSON.stringify(tsconfigBase)));
