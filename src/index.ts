@@ -49,7 +49,11 @@ const tsconfig = {
     "include": [
         "src/**/*",
         "test/**/*"
-    ]
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ],
 };
 
 const tsconfigPath = currentDirPath + path.sep + "tsconfig.json";
