@@ -11,6 +11,12 @@ const args = yargs(process.argv).options({
         description: "indentation of tsconfig file default => 4",
         default: 4,
         type: "number"
+    },
+    "command": {
+        alias: "c",
+        description: "adds compile and auto compile commands in package json, beware that it also changes your indentation (indentation default to 4)",
+        default: true,
+        type: "boolean"
     }
 }).help("help").argv;
 
@@ -22,11 +28,10 @@ const tsconfig = {
     "compilerOptions": {
         "target": "es2015",
         "module": "commonjs",
-        "lib": ["ES2015", "DOM"],
+        "lib": ["ESNext", "DOM"],
         "declaration": true,
         "sourceMap": true,
         "removeComments": true,
-        "downlevelIteration": true,
         "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
@@ -64,3 +69,19 @@ const options: jsBeautify.JSBeautifyOptions = {
 };
 
 fs.writeFileSync(tsconfigPath, jsBeautify.js_beautify(JSON.stringify(tsconfig), options));
+console.log("tsconfig file created");
+
+if (args.command) {
+    const packageJsonPath = currentDirPath + path.sep + "package.json";
+
+    console.log("reading package json.....");
+
+    const packageObj = JSON.parse(fs.readFileSync(packageJsonPath).toString());
+
+    packageObj["scripts"]["auto-compile"] = "tsc -w -p tsconfig.json";
+    packageObj["scripts"]["compile"] = "tsc -p tsconfig.json";
+
+    fs.writeFileSync(packageJsonPath, jsBeautify.js_beautify(JSON.stringify(packageObj), options));
+
+    console.log("compile and auto compile commands added in package json");
+}

@@ -3,14 +3,12 @@
     "compilerOptions": {
         "target": "es2015",
         "module": "commonjs",
-        "lib": [
-            "ES2015",
+        "lib": ["ESNext",
             "DOM"
         ],
         "declaration": true,
         "sourceMap": true,
         "removeComments": true,
-        "downlevelIteration": true,
         "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
@@ -26,19 +24,19 @@
         "baseUrl": ".",
         "paths": {
             "*": [
-                "node_modules/*"
-            ]
+                "node_modules/*"]
         },
         "rootDirs": [
             "."
         ],
         "outDir": "./dist"
     },
+    "include": [
+        "src/**/*",
+        "test/**/*"
+    ],
     "exclude": [
         "node_modules",
         "dist"
-    ],
-    "include": [
-        "**/*.ts"
     ]
 }

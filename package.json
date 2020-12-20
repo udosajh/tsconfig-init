@@ -1,45 +1,45 @@
 {
-  "name": "tsconfig-init",
-  "version": "1.0.2",
-  "description": "Create ts config files in the current directory",
-  "main": "./dist/index.js",
-  "scripts": {
-    "auto-compile": "npm run lint && tsc -w -p tsconfig.json",
-    "start": "node ./dist/index.js",
-    "compile": "npm run lint && tsc -p tsconfig.json",
-    "lint": "tslint -c tslint.json -p tsconfig.json"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/udosajh/tsconfig-init.git"
-  },
-  "keywords": [
-    "tsconfig init",
-    "tsconfig default file"
-  ],
-  "author": "udosajh",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/udosajh/tsconfig-init/issues"
-  },
-  "homepage": "https://github.com/udosajh/tsconfig-init#readme",
-  "devDependencies": {
-    "@types/js-beautify": "^1.13.1",
-    "@types/node": "12.12.6",
-    "@types/shelljs": "^0.8.8",
-    "nodemon": "^2.0.6",
-    "ts-node": "^9.0.0",
-    "tslint": "^6.1.3",
-    "typescript": "^4.1.2"
-  },
-  "dependencies": {
-    "@types/yargs": "^15.0.10",
-    "js-beautify": "^1.13.0",
-    "shelljs": "^0.8.4",
-    "yargs": "^16.1.1"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "bin": "dist/index.js"
+    "name": "tsconfig-init",
+    "version": "1.0.2",
+    "description": "Create ts config files in the current directory",
+    "main": "./dist/index.js",
+    "scripts": {
+        "auto-compile": "tsc -w -p tsconfig.json",
+        "start": "node ./dist/index.js",
+        "compile": "tsc -p tsconfig.json",
+        "lint": "tslint -c tslint.json -p tsconfig.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/udosajh/tsconfig-init.git"
+    },
+    "keywords": [
+        "tsconfig init",
+        "tsconfig default file"
+    ],
+    "author": "udosajh",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/udosajh/tsconfig-init/issues"
+    },
+    "homepage": "https://github.com/udosajh/tsconfig-init#readme",
+    "devDependencies": {
+        "@types/js-beautify": "^1.13.1",
+        "@types/node": "12.12.6",
+        "@types/shelljs": "^0.8.8",
+        "nodemon": "^2.0.6",
+        "ts-node": "^9.0.0",
+        "tslint": "^6.1.3",
+        "typescript": "^4.1.2"
+    },
+    "dependencies": {
+        "@types/yargs": "^15.0.10",
+        "js-beautify": "^1.13.0",
+        "shelljs": "^0.8.4",
+        "yargs": "^16.1.1"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
+    "bin": "dist/index.js"
 }
