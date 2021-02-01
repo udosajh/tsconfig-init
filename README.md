@@ -4,6 +4,9 @@
 
 ## command
 
+    * -l => to view list of identifiers example tsconfig-init -l,
+        * will return ['default-tsconfig']
+
     - run this command in terminal
         - npx tsconfig-init
             - this will create tsconfig file in your current directory
